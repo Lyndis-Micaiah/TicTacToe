@@ -330,7 +330,7 @@ class Game:
                     elif self.state == 'game':
                         if self.menu_button.handle_event(event):
                             self.state = 'menu'
-                        elif event.type == pygame.MOUSEBUTTONDOWN and not self.game.game_over:
+                        elif event.type == pygame.MOUSEBUTTONDOWN and not self.game.game_over and not self.game.thinking:
                             x, y = event.pos
                             if (self.game.board_offset_x <= x <= self.game.board_offset_x + self.game.size * self.game.cell_size and
                                 self.game.board_offset_y <= y <= self.game.board_offset_y + self.game.size * self.game.cell_size):
@@ -345,7 +345,10 @@ class Game:
                                         elif self.game.is_board_full():
                                             self.game.game_over = True
                                         else:
-                                            self.game.current_player = 'O'
+                                            if self.game.current_player == 'X':
+                                                self.game.current_player = 'O'
+                                            else:
+                                                self.game.current_player = 'X'
                                             if self.game.ai_mode:
                                                 self.game.thinking = True
 
