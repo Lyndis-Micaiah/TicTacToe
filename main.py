@@ -13,6 +13,7 @@ BLUE = (65, 105, 225)
 LIGHT_BLUE = (100, 149, 237)
 RED = (220, 20, 60)
 GREEN = (34, 139, 34)
+
 class Button:
     def __init__(self, x, y, width, height, text, color, hover_color):
         self.rect = pygame.Rect(x, y, width, height)
